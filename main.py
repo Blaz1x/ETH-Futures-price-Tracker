@@ -10,11 +10,11 @@ def main():
     while True:
         try:
             ETHUSDT = TA_Handler(
-            symbol="ETHUSDT",
-            exchange="binance",
-            screener="crypto",
-            interval="1m",
-            timeout=None
+                symbol="ETHUSDT",
+                exchange="binance",
+                screener="crypto",
+                interval="1m",
+                timeout=None
             )   
             d1 = ETHUSDT.get_analysis().summary
             s1 = json.dumps(d1)
@@ -28,7 +28,7 @@ def main():
             SYMBOL_PRICE = text["price"]
             SYMBOL_TIME_TIMESTAMP = int(text["time"])
             SYMBOL_TIME = datetime.fromtimestamp(SYMBOL_TIME_TIMESTAMP / 1000).strftime("%H:%M:%S")
-            SYMBOL_TOTAL = SYMBOL_NAME+ ': ' + SYMBOL_PRICE + ' $'
+            SYMBOL_TOTAL = SYMBOL_NAME+ ': ' + SYMBOL_PRICE + '$'
             
             print(f"{SYMBOL_TOTAL} AT {SYMBOL_TIME}")
             print('RECOMMENDATION:', RECOMMENDATION)
@@ -38,8 +38,8 @@ def main():
             MAX_PRICE = float(max(last_price))
             MIN_PRICE = float(min(last_price))
             
-            print(f'{SYMBOL_NAME} MAX PRICE:{MAX_PRICE}')
-            print(f'{SYMBOL_NAME} MIN PRICE:{MIN_PRICE}')
+            print(f'{SYMBOL_NAME} MAX PRICE:{MAX_PRICE}$')
+            print(f'{SYMBOL_NAME} MIN PRICE:{MIN_PRICE}$')
             
             PERECENT_DIF = abs(MAX_PRICE - MIN_PRICE) / ((MAX_PRICE + MIN_PRICE) / 2) * 100
             PERECENT_DIF_ROUNDED = round(PERECENT_DIF, 2)
